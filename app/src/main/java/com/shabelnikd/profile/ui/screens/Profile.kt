@@ -124,8 +124,11 @@ fun ProfileScreen() {
 
             AlertDialogWithTextField(
                 showDialog = showDialog,
-                onConfirm = { text ->
-                    fullName.value = text
+                onConfirm = { text, additionalText ->
+                    fullName.value = if (text.isEmpty()) fullName.value else text
+
+                    userAboutText.value =
+                        if (additionalText.isEmpty()) userAboutText.value else additionalText
                 },
                 onDismiss = {}
             )
